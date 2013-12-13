@@ -29,28 +29,7 @@
 
 	<video autoplay controls></video>
 
-	<script>
-
-			navigator.getUserMedia = navigator.webkitGetUserMedia ||
-										navigator.mozGetUserMedia ||
-										navigator.msGetUserMedia ||
-										navigator.getUserMedia;
-
-			function getMedia (getAudio, getVideo) {
-
-				navigator.webkitGetUserMedia({
-					audio: getAudio,
-					video: getVideo
-				}, function (localMediaStream) {
-					var video = document.querySelector('video');
-					video.src = window.URL.createObjectURL(localMediaStream);
-					video.play();
-				}, function (err) {
-					alert('NOT SUPPORTED: ' + err);
-				})
-			}
-
-	</script>
+	<script src="javascript/script.js"></script>
 	
 </body>
 </html>
