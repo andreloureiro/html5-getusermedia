@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getUserMedia API</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1'>
+	<link rel="stylesheet" href="stylesheet/style.css">
+
+</head>
+<body>
+
+	<ul class="options">
+		<li>
+			<a href="javascript:;" onclick="getMedia(true, true)">
+				AUDIO AND VIDEO
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="getMedia(true, false)">
+				 ONLY AUDIO
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" onclick="getMedia(false, true)">
+				ONLY VIDEO
+			</a>
+		</li>
+	</ul>
+
+	<video autoplay controls></video>
+
+	<script>
+
+			navigator.getUserMedia = navigator.webkitGetUserMedia ||
+										navigator.mozGetUserMedia ||
+										navigator.msGetUserMedia ||
+										navigator.getUserMedia;
+
+			function getMedia (getAudio, getVideo) {
+
+				navigator.webkitGetUserMedia({
+					audio: getAudio,
+					video: getVideo
+				}, function (localMediaStream) {
+					var video = document.querySelector('video');
+					video.src = window.URL.createObjectURL(localMediaStream);
+					video.play();
+				}, function (err) {
+					alert('NOT SUPPORTED: ' + err);
+				})
+			}
+
+	</script>
+	
+</body>
+</html>
