@@ -1,11 +1,8 @@
-navigator.getUserMedia = navigator.webkitGetUserMedia ||
-							navigator.mozGetUserMedia ||
-							navigator.msGetUserMedia ||
-							navigator.getUserMedia;
+navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.getUserMedia;
 
 function getMedia (getAudio, getVideo) {
 
-	navigator.webkitGetUserMedia({
+	navigator.getUserMedia({
 		audio: getAudio,
 		video: getVideo
 	}, function (stream) {
